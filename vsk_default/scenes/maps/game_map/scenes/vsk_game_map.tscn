@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://vsk_default/scenes/maps/hut/models/geometry.tscn" id="1_vl5h6"]
+[ext_resource type="PackedScene" path="res://vsk_hut/core/mirror.tscn" id="2_c7ppy"]
+[ext_resource type="Shader" path="res://addons/mirror/mirror.gdshader" id="3_wveo8"]
+[ext_resource type="PackedScene" uid="uid://dgf4u5ip2bmdc" path="res://vsk_default/scenes/maps/hut/models/collision_box.tscn" id="4_lwrl0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dkibh"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_wveo8")
+
+[node name="GameMap" type="Node3D"]
+
+[node name="Geometry" parent="." instance=ExtResource("1_vl5h6")]
+
+[node name="Mirror" parent="." instance=ExtResource("2_c7ppy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -1)
+surface_material_override/1 = SubResource("ShaderMaterial_dkibh")
+
+[node name="CollisionBox" parent="." instance=ExtResource("4_lwrl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="CollisionBox2" parent="." instance=ExtResource("4_lwrl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2.23517e-08)
+
+[node name="CollisionBox3" parent="." instance=ExtResource("4_lwrl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.47035e-08, 0, -1)

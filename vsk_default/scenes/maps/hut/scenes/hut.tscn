@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://mk6rtrpnxf6k"]
+
+[ext_resource type="Script" path="res://addons/vsk_map/vsk_map_definition.gd" id="1_ytadk"]
+[ext_resource type="PackedScene" uid="uid://dsl8xrn7w0rni" path="res://addons/mirror/mirror.tscn" id="2_ahrog"]
+[ext_resource type="PackedScene" uid="uid://c76ltxt3hfdu4" path="res://vsk_default/scenes/maps/hut/models/cc0_hut.gltf" id="2_vpi3f"]
+[ext_resource type="Shader" path="res://addons/mirror/mirror.gdshader" id="3_aihpp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kqt5x"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_aihpp")
+
+[node name="GameMap" type="Node3D"]
+script = ExtResource("1_ytadk")
+map_resources = []
+entity_instance_list = []
+entity_instance_properties_list = []
+vskeditor_preview_type = 0
+vskeditor_preview_camera_path = NodePath("Camera3D")
+vskeditor_pipeline_paths = []
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="cc0_hut@PendantLight@OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.501129, 1.91255, -0.000792921)
+distance_fade_enabled = true
+omni_shadow_mode = 0
+
+[node name="cc0_hutPendantLightOmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51951, 1.91255, -0.0164961)
+distance_fade_enabled = true
+omni_shadow_mode = 0
+
+[node name="cc0_hut" parent="." instance=ExtResource("2_vpi3f")]
+
+[node name="HutShell" parent="cc0_hut" index="12"]
+visible = false
+
+[node name="Mirror" parent="." node_paths=PackedStringArray("origin") instance=ExtResource("2_ahrog")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.4, -2.4)
+surface_material_override/1 = SubResource("ShaderMaterial_kqt5x")
+origin = NodePath("")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.459, 1.122, 0)
+fov = 70.0
+
+[editable path="cc0_hut"]

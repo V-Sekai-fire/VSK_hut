@@ -66,7 +66,6 @@ script = ExtResource("3")
 [node name="DirectionalLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.996195, 0, 0.0871556, 0.0616283, 0.707107, 0.704416, -0.0616283, 0.707107, -0.704416, 0, 0, 0)
 shadow_enabled = true
-shadow_normal_bias = 2.0
 directional_shadow_blend_splits = true
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="."]
@@ -79,7 +78,7 @@ enable_shadows = true
 [node name="ReflectionTest" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.58593, 2.15742, 6.00067)
 mesh = SubResource("3")
-surface_material_override/0 = SubResource("StandardMaterial3D_0s7q7")
+surface_material_override/1 = SubResource("StandardMaterial3D_0s7q7")
 
 [node name="TestBallAnimation" parent="." instance=ExtResource("5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
