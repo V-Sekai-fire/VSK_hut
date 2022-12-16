@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://mk6rtrpnxf6k"]
+[gd_scene load_steps=4 format=3 uid="uid://mk6rtrpnxf6k"]
 
 [ext_resource type="Script" path="res://addons/vsk_map/vsk_map_definition.gd" id="1_ytadk"]
 [ext_resource type="PackedScene" uid="uid://c76ltxt3hfdu4" path="res://vsk_default/scenes/maps/hut/models/cc0_hut.gltf" id="2_vpi3f"]
+[ext_resource type="Script" path="res://addons/vsk_importer_exporter/vsk_uro_pipeline.gd" id="3_h06rh"]
 
 [node name="GameMap" type="Node3D"]
 script = ExtResource("1_ytadk")
@@ -10,7 +11,7 @@ entity_instance_list = []
 entity_instance_properties_list = []
 vskeditor_preview_type = 0
 vskeditor_preview_camera_path = NodePath("Camera3D")
-vskeditor_pipeline_paths = []
+vskeditor_pipeline_paths = [NodePath("UroPipeline")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -39,5 +40,9 @@ visible = false
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.459, 1.122, 0)
 fov = 70.0
+
+[node name="UroPipeline" type="Node" parent="."]
+script = ExtResource("3_h06rh")
+database_id = "69ba151f-a0ca-41e4-b918-f7d7e7399d79"
 
 [editable path="cc0_hut"]
