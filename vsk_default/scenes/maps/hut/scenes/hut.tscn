@@ -1,31 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://mk6rtrpnxf6k"]
+[gd_scene load_steps=3 format=3 uid="uid://mk6rtrpnxf6k"]
 
 [ext_resource type="Script" path="res://addons/vsk_map/vsk_map_definition.gd" id="1_ytadk"]
-[ext_resource type="PackedScene" uid="uid://d0l70gbi0sc2w" path="res://addons/mirror/mirror.tscn" id="2_ahrog"]
 [ext_resource type="PackedScene" uid="uid://c76ltxt3hfdu4" path="res://vsk_default/scenes/maps/hut/models/cc0_hut.gltf" id="2_vpi3f"]
-
-[sub_resource type="Shader" id="Shader_sixfn"]
-code = "shader_type spatial;
-render_mode unshaded;
-
-uniform sampler2D textureL;
-uniform sampler2D textureR;
-void fragment() {
-	vec2 uv = vec2(1.0-UV.x,  UV.y);
-	
-	if(VIEW_INDEX==0)
-		ALBEDO = texture(textureL,uv).rgb;
-	else
-		ALBEDO = texture(textureR,uv).rgb;
-	
-	// Place fragment code here.
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ufar"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("Shader_sixfn")
 
 [node name="GameMap" type="Node3D"]
 script = ExtResource("1_ytadk")
@@ -50,15 +26,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51951, 1.91255, -0.0164961
 distance_fade_enabled = true
 omni_shadow_mode = 0
 
+[node name="cc0_hutPendantLightOmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49685, 1.88834, 1.42191)
+distance_fade_enabled = true
+omni_shadow_mode = 0
+
 [node name="cc0_hut" parent="." instance=ExtResource("2_vpi3f")]
 
 [node name="HutShell" parent="cc0_hut" index="12"]
 visible = false
-
-[node name="Mirror" parent="." node_paths=PackedStringArray("origin") instance=ExtResource("2_ahrog")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.4, -2.4)
-surface_material_override/1 = SubResource("ShaderMaterial_2ufar")
-origin = NodePath("")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.459, 1.122, 0)
