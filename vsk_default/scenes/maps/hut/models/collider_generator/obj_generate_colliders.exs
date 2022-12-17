@@ -1,6 +1,5 @@
 # MIT License
 
-# Copyright (c) 2022 SaracenOne
 # Copyright (c) 2022 K. S. Ernest (iFire) Lee
 # Copyright (c) 2022 V-Sekai Contributors
 
